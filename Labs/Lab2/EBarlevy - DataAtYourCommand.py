@@ -2,22 +2,8 @@
 import json
 filename = 'db.json'
 people = []
-
-def getFormattedData(filename):
-    with open(filename, 'r') as f:
-        return f.read()
-
-def writeToFile(dictionary, filename):
-    currentData = getFormattedData(filename)
-    with open(filename, 'w') as f:
-        if len(currentData) > 38:
-            formattedData = currentData[:-7] + ',' + json.dumps(dictionary, indent=4) + currentData[-7:]
-        elif len(currentData) < 38:
-            print("Imporoperly formatted file")
-            return
-        else:
-            formattedData = currentData[:-7] + json.dumps(dictionary, indent=4) + currentData[-7:]
-        f.write(formattedData)
+peopleDict = {}
+peopleDict["People"] = people
 
 def readFromFile(filename):
     with open(filename, 'r') as f:
@@ -27,6 +13,10 @@ def readFromFile(filename):
         else:
             return 'No json data found'
 
+def writeToFile(dictionary, filename):
+    with open(filename, 'w') as f:
+        f.write(json.dumps(dictionary, indent=4))
+
 def createDictionary(fName, lName, phone):
     dictionary = {}
     dictionary['FirstName'] = fName
@@ -34,7 +24,27 @@ def createDictionary(fName, lName, phone):
     dictionary['PhoneNumber'] = phone
     return dictionary
 
+def findRecord(value):
+    for person in people:
+        if person['FirstName'] == value:
+            return person
+        if person['LastName'] == value:
+            return person
+        if person['PhoneNumber'] == value:
+            return person
+    return f'No people found with \'{value}\'.'
+
+def removeRecord(value):
+    person = findRecord(value)
+    if isinstance(person, str):
+        return person
+    people.remove(person)
+    print(f'\'{value}\' has been removed.')
+
 while True:
+    peopleDict = readFromFile(filename)
+    if not isinstance(peopleDict, str):
+        people = peopleDict["People"]
     print('')
     print('Welcome to the Contact Database!')
     print('')
@@ -52,15 +62,25 @@ while True:
         case 'a':
             commandList = command.split()
             if len(commandList) == 4:
-                writeToFile(createDictionary(commandList[1], commandList[2], commandList[3]), filename)
+                people.append(createDictionary(commandList[1], commandList[2], commandList[3]))
+                writeToFile(peopleDict, filename)
             else:
                 print("Incorrect Number of Parameters")
         case 'l':
             print(readFromFile(filename))
         case 'f':
-            
+            commandList = command.split()
+            if len(commandList) == 2:
+                print(findRecord(commandList[1]))
+            else:
+                print("Incorrect Number of Parameters")
         case 'd':
-            print('del')
+            commandList = command.split()
+            if len(commandList) == 2:
+                #print(findRecord(commandList[1]))
+                print('del')
+            else:
+                print("Incorrect Number of Parameters")
         case 'q':
             break
         case default:
