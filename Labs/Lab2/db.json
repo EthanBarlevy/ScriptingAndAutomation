@@ -4,6 +4,11 @@
             "FirstName": "asd",
             "LastName": "asd",
             "PhoneNumber": "asd"
+        },
+        {
+            "FirstName": "asdf",
+            "LastName": "asdf",
+            "PhoneNumber": "asdf"
         }
     ]
 }

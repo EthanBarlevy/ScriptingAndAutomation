@@ -26,9 +26,9 @@ def createDictionary(fName, lName, phone):
 
 def findRecord(value):
     for person in people:
-        if person['FirstName'] == value:
+        if person['FirstName'].lower() == value.lower():
             return person
-        if person['LastName'] == value:
+        if person['LastName'].lower() == value.lower():
             return person
         if person['PhoneNumber'] == value:
             return person
@@ -67,6 +67,7 @@ while True:
             if len(commandList) == 4:
                 people.append(createDictionary(commandList[1], commandList[2], commandList[3]))
                 writeToFile(peopleDict, filename)
+                print(f'{commandList[1]} has been added.')
             else:
                 print("Incorrect Number of Parameters")
         case 'l':
