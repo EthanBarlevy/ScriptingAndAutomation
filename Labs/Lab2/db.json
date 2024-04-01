@@ -1,1 +1,9 @@
-"No json data found"
+{
+    "People": [
+        {
+            "FirstName": "asd",
+            "LastName": "asd",
+            "PhoneNumber": "asd"
+        }
+    ]
+}

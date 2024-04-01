@@ -37,13 +37,16 @@ def findRecord(value):
 def removeRecord(value):
     person = findRecord(value)
     if isinstance(person, str):
-        return person
+        print(person)
+        return
     people.remove(person)
+    writeToFile(peopleDict, filename)
     print(f'\'{value}\' has been removed.')
 
 while True:
-    peopleDict = readFromFile(filename)
-    if not isinstance(peopleDict, str):
+    fileinfo = readFromFile(filename)
+    if not isinstance(fileinfo, str):
+        peopleDict = fileinfo
         people = peopleDict["People"]
     print('')
     print('Welcome to the Contact Database!')
@@ -77,8 +80,7 @@ while True:
         case 'd':
             commandList = command.split()
             if len(commandList) == 2:
-                #print(findRecord(commandList[1]))
-                print('del')
+                removeRecord(commandList[1])
             else:
                 print("Incorrect Number of Parameters")
         case 'q':
