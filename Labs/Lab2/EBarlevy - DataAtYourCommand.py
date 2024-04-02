@@ -77,7 +77,8 @@ while True:
             else:
                 print("Incorrect Number of Parameters")
         case 'l':
-            print(readFromFile(filename))
+            for record in people:
+                print(record)
         case 'f':
             commandList = command.split()
             if len(commandList) == 2:
