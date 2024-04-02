@@ -44,6 +44,12 @@ def removeRecord(value):
     print(f'\'{value}\' has been removed.')
 
 while True:
+    try:
+        with open(filename, 'x') as f:
+            f.write()
+    except:
+        print('')
+
     fileinfo = readFromFile(filename)
     if not isinstance(fileinfo, str):
         peopleDict = fileinfo
