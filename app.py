@@ -49,6 +49,7 @@ print(tuple[1])
 
 #JSON
 
+'''
 import json
 
 dictionary = {}
@@ -68,3 +69,28 @@ with open('owo.json', 'r') as f:
     json_dictionary = json.loads(input)
 
 print(json_dictionary["name"])
+'''
+
+#REPL
+'''
+x = input('>>> ')
+print(x)
+'''
+
+# Dunder variables / functions
+
+print(__name__)
+print(__file__)
+
+
+class repl_class():
+    def __init__(self) -> None:
+        print('intiting class')
+
+def start_app():
+    print('starting')
+    r = repl_class()
+
+# these are kinda like preprocessor functions. they allow for running not top to bottom
+if __name__ == '__main__':
+    start_app()
