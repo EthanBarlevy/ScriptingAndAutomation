@@ -38,6 +38,7 @@ def startGame():
     entrAnswer.place(x=320, y=60)
     btnSubmit.place(x=150, y=90)
     lblError.place(x=150, y=120)
+    lblCurrentScore.place(x=250, y=150)
 
 def submitButton():
     global points
@@ -59,6 +60,7 @@ def submitButton():
         else:
             lblError.config(text='Quite far off. +0pts')
         btnNextQuestion.place(x=140, y=150)
+        lblCurrentScore.config(text=points)
     else:
         lblError.config(text='Invalid Year')
 
@@ -71,6 +73,7 @@ def gameOver():
     btnNextQuestion.place_forget()
     entrAnswer.place_forget()
     btnSubmit.place_forget()
+    lblCurrentScore.place_forget()
     btnPlay.place(x=100, y=100)
     btnCancel.place(x=200, y=100)
     addQuestions()
@@ -80,7 +83,6 @@ def nextQuestionButton():
     global questions
     if len(questions) > 1:
         questions.pop(0)
-        print(len(questions))
         startGame()
     else:
         gameOver()
@@ -99,6 +101,7 @@ entrAnswer = ttk.Entry(form, width='4')
 btnSubmit = ttk.Button(form, text='Submit', command=submitButton)
 
 lblError = ttk.Label(form)
+lblCurrentScore = ttk.Label(form)
 
 btnNextQuestion = ttk.Button(form, text='Next Question', command=nextQuestionButton)
 form.mainloop()
