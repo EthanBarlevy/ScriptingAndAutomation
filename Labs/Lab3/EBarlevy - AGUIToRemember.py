@@ -60,6 +60,7 @@ def submitButton():
         else:
             lblError.config(text='Quite far off. +0pts')
         btnNextQuestion.place(x=140, y=150)
+        btnSubmit.place_forget();
         lblCurrentScore.config(text=points)
     else:
         lblError.config(text='Invalid Year')
