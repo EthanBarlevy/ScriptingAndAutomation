@@ -47,7 +47,7 @@ print(tuple[0])
 print(tuple[1])
 '''
 
-#JSON
+# JSON
 
 '''
 import json
@@ -71,7 +71,7 @@ with open('owo.json', 'r') as f:
 print(json_dictionary["name"])
 '''
 
-#REPL
+# REPL
 '''
 x = input('>>> ')
 print(x)
@@ -79,6 +79,7 @@ print(x)
 
 # Dunder variables / functions
 
+'''
 print(__name__)
 print(__file__)
 
@@ -94,3 +95,48 @@ def start_app():
 # these are kinda like preprocessor functions. they allow for running not top to bottom
 if __name__ == '__main__':
     start_app()
+'''
+
+# tkinter
+
+import tkinter as tk
+
+'''
+x = 0
+def btnClick():
+    global x
+    print('owo')
+    #lblInfo.configure(text=f'cool story bro {x}') idk why this doesnt work but oh well
+
+form = tk.Tk()
+form.title('Practice')
+form.geometry('500x300')
+
+#.pack() puts the items in a list
+#.grid(column=X, row=Y) its a grid
+#.place(x=X, y=Y) coordinates
+
+lblTitle = tk.Label(form, text='OwO').grid(column=0, row=0)
+lblInfo = tk.Label(form, text='cool story bro').grid(column=2, row=0)
+
+btnClick = tk.Button(form, text='click', command=btnClick).grid(column=1, row=1)
+entrTest = tk.Entry(form, width=4).grid(column=3, row=1)
+
+form.mainloop()
+'''
+def change_label_text():
+    label.config(text="New Text")
+
+# Create the main window
+root = tk.Tk()
+
+# Create a label widget
+label = tk.Label(root, text="Original Text")
+label.pack()
+
+# Create a button to trigger the label text change
+button = tk.Button(root, text="Change Label Text", command=change_label_text)
+button.pack()
+
+# Run the Tkinter event loop
+root.mainloop()
