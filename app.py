@@ -123,7 +123,7 @@ btnClick = tk.Button(form, text='click', command=btnClick).grid(column=1, row=1)
 entrTest = tk.Entry(form, width=4).grid(column=3, row=1)
 
 form.mainloop()
-'''
+
 def change_label_text():
     label.config(text="New Text")
 
@@ -140,3 +140,7 @@ button.pack()
 
 # Run the Tkinter event loop
 root.mainloop()
+'''
+
+#virtual enviroments
+# python -m venv ve
