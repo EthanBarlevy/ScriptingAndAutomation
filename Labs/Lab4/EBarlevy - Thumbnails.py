@@ -12,7 +12,6 @@ box = (25, 0, 225, 200)
 def ProcessImages(source, destination):
     with Image.open(source) as img:
         img = img.crop(box)
-        #img.paste(region, box)
         img = img.rotate(270)
         img.thumbnail((75, 75))
         img = img.convert("L")

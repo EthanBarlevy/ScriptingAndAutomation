@@ -144,3 +144,13 @@ root.mainloop()
 
 #virtual enviroments
 # python -m venv ve
+
+# REGEX
+import re
+
+phone = '123-456-7890'
+match = re.search(r"(\d{3})-\d{3}-\d{4}", phone)
+if match:
+    print(match.group(1))
+else:
+    print("fail")
