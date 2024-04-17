@@ -1,4 +1,3 @@
-import glob
 import os, shutil
 from PIL import Image
 
@@ -19,7 +18,7 @@ def ProcessImages(source, destination):
 
 counter = 0
 
-paths = glob.glob("./images/*.jpg")
-for path in paths:
+paths = os.listdir("./images/")
+for pathh in paths:
     counter += 1
-    ProcessImages(path, "./new_images/pic" + str(counter).zfill(4) + '.png')
+    ProcessImages(os.path.join("./images/", pathh), "./new_images/pic" + str(counter).zfill(4) + '.png')

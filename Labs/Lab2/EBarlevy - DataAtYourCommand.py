@@ -78,7 +78,10 @@ while True:
                 print("Incorrect Number of Parameters")
         case 'l':
             for record in people:
-                print(record)
+                print(record.get("FirstName"))
+                print(record.get("LastName"))
+                print(record.get("PhoneNumber"))
+                print('---------------')
         case 'f':
             commandList = command.split()
             if len(commandList) == 2:
