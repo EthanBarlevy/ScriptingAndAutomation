@@ -22,9 +22,12 @@ def buttonClicked(slap, extended):
         print("too many requests")
     for link in links:
         save_name = f'image{row}.png'
-        urllib.request.urlretrieve(link, save_name)
-        extended.append([sg.Image(save_name)])
-        row += 1
+        try:
+            urllib.request.urlretrieve(link, save_name)
+            extended.append([sg.Image(save_name)])
+            row += 1
+        except:
+            pass
 
 layout = [[sg.Button('Scrape', key='SCRAPE')]]
 
